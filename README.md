@@ -203,7 +203,7 @@ NodeList are also an array-like object but it offers more functionality than a H
 3. Use cases
 
    - Use `HTMLCollection` when dealing specifically with HTML elements.
-   - Use `NodeList` when you neew to work with a broader range of node types.
+   - Use `NodeList` when you need to work with a broader range of node types.
 
 In practice, both `HTMLCollection` and `NodeList` are often used interchangeably, especially when dealing with a list of elements in the DOM. Understanding the differences can be important when choosing the appropriate method for specific use cases.
 
@@ -217,6 +217,9 @@ In most cases the search area for these methods are the entire document, and if 
 
 This method returns an element with the specified Id value. It will return null if the element doesn't exists, and if more elements with the same Id exsits in the DOM, the first match will be returned. **Note**, Id should always be unique.
 
+```html
+<div id="main-container">Main content</div>
+```
 ```js
 const mainContainer = document.getElementById('main-container');
 
@@ -225,7 +228,7 @@ console.log(mainContainer);
 
 [Back to Top](#javascript-dom-manipulation)
 
-### getElementByClassName ( className ) => [HTMLCollection](#htmlcollection)
+### getElementsByClassName ( className ) => [HTMLCollection](#htmlcollection)
 
 ```js
 const pTags = document.getElementsByClassName('content');
@@ -320,7 +323,7 @@ const article = document.createElement('article');
 console.log(article);
 ```
 
-This just creates the element, and it exists now in the memore but it's not attached to the DOM. Let's add some content:
+This just creates the element, and it exists now in the memory but it's not attached to the DOM. Let's add some content:
 
 ```js
 article.innerText = 'This is an article';
@@ -723,7 +726,7 @@ The property returns a HTMLCollection of an element's child elements.
 
 ### firstElementChild
 
-This property returns the first node thatis of type element.
+This property returns the first node that is of type element.
 
 [Back to Top](#javascript-dom-manipulation)
 
@@ -751,5 +754,7 @@ in the DOM tree. If none exists, then null will be returned.
 
 Return the element that comes directly
 before the given element on the same level in the DOM tree. If none exisist, then null will be returned.
+
+### closest ( selector ) => HTMLElement | null
 
 [Back to Top](#javascript-dom-manipulation)
