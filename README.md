@@ -1,6 +1,6 @@
 # JavaScript DOM Manipulation
 
-<details>
+<details open>
 <summary>Table of Contents</summary>
 
 - [DOM](#dom)
@@ -43,6 +43,7 @@
   - [removeAttribute](#removeattribute--name---void)
   - [removeChild](#removechild--node---removed-node--null)
   - [replaceChild](#replacechild--newnode-oldnode---replaced-node)
+  - [replaceChildren](#replacechildren--element1-element2-elementtn---undefined)
   - [classList](#classlist)
   - [style](#style)
   - [tagName](#tagName)
@@ -217,7 +218,7 @@ In most cases the search area for these methods are the entire document, and if 
 This method returns an element with the specified Id value. It will return null if the element doesn't exists, and if more elements with the same Id exsits in the DOM, the first match will be returned. **Note**, Id should always be unique.
 
 ```js
-const mainContainer = document.getElementById("main-container");
+const mainContainer = document.getElementById('main-container');
 
 console.log(mainContainer);
 ```
@@ -227,7 +228,7 @@ console.log(mainContainer);
 ### getElementByClassName ( className ) => [HTMLCollection](#htmlcollection)
 
 ```js
-const pTags = document.getElementsByClassName("content");
+const pTags = document.getElementsByClassName('content');
 console.log(pTags);
 ```
 
@@ -256,18 +257,18 @@ This method returns the first element that matches your given CSS selector. This
 ```
 
 ```js
-const item = document.querySelector(".item");
+const item = document.querySelector('.item');
 console.log(item);
 
-const mainSection = document.querySelector("#main-section");
+const mainSection = document.querySelector('#main-section');
 console.log(mainSection);
 
 // alternative 1 ( searching from the top )
-const nestedItem = document.querySelector("#main-section .item");
+const nestedItem = document.querySelector('#main-section .item');
 console.log(nestedItem);
 
 // alternative 2 ( searching from parent element )
-const nestedItem2 = mainSection.querySelector(".item");
+const nestedItem2 = mainSection.querySelector('.item');
 console.log(nestedItem2);
 ```
 
@@ -281,7 +282,7 @@ This method returns all matches of the specific css selector, and it collects
 them inside a `NodeList` and returns that `NodeList`.
 
 ```js
-const paragraphs = document.querySelectorAll(".para");
+const paragraphs = document.querySelectorAll('.para');
 console.log(paragraphs);
 
 const firstParagraph = paragraphs[0];
@@ -300,7 +301,7 @@ inherited styles and styles that have been applied on the style attribute.
 ```
 
 ```js
-const p = document.querySelector(".paragraph");
+const p = document.querySelector('.paragraph');
 const styles = window.getComputedStyle(p);
 console.log(styles.color);
 ```
@@ -315,14 +316,14 @@ This method creates an element node. This method is often used with the
 `document` since we are create an element to the DOM.
 
 ```js
-const article = document.createElement("article");
+const article = document.createElement('article');
 console.log(article);
 ```
 
 This just creates the element, and it exists now in the memore but it's not attached to the DOM. Let's add some content:
 
 ```js
-article.innerText = "This is an article";
+article.innerText = 'This is an article';
 ```
 
 [Back to Top](#javascript-dom-manipulation)
@@ -334,7 +335,7 @@ This method appends a node as the last child of an element.
 Fist we need an element, so let's use the one we already have.
 
 ```js
-const article = document.createElement("article");
+const article = document.createElement('article');
 ```
 
 Then we need another element in order to attach our created element, let's use the body-element in this case since it's always there. You can access it on the document object.
@@ -354,7 +355,7 @@ This is our existing html:
 And now we add our article:
 
 ```js
-const section = document.querySelector(".section");
+const section = document.querySelector('.section');
 section.appendChild(article);
 ```
 
@@ -392,20 +393,20 @@ We have this HTML:
 Let's create a new element, a div for instance.
 
 ```js
-const div = document.createElement("div");
-div.innerText = "This is the inner text of the div";
-div.classList.add("div-content");
+const div = document.createElement('div');
+div.innerText = 'This is the inner text of the div';
+div.classList.add('div-content');
 ```
 
 Now we can referenc the main element and then inject the `div` we created.
 
 ```js
-const main = document.querySelector(".main-content");
+const main = document.querySelector('.main-content');
 
-main.insertAdjacentElement("afterbegin", div);
-main.insertAdjacentElement("beforeend", div);
-main.insertAdjacentElement("beforebegin", div);
-main.insertAdjacentElement("afterend", div);
+main.insertAdjacentElement('afterbegin', div);
+main.insertAdjacentElement('beforeend', div);
+main.insertAdjacentElement('beforebegin', div);
+main.insertAdjacentElement('afterend', div);
 ```
 
 <details>
@@ -434,15 +435,15 @@ Let's insert a new element with the help of `insertAdjacentHTML` and put it at t
 ```js
 const newTodo = `<p>Become CEO</p>`;
 
-const todoList = document.querySelector(".todo-list");
-todoList.insertAdjacentHTML("afterbegin", newTodo);
+const todoList = document.querySelector('.todo-list');
+todoList.insertAdjacentHTML('afterbegin', newTodo);
 ```
 
 But if we do this, we add it twice, what will happen?
 
 ```js
-todoList.insertAdjacentHTML("afterbegin", newTodo);
-todoList.insertAdjacentHTML("beforeend", newTodo);
+todoList.insertAdjacentHTML('afterbegin', newTodo);
+todoList.insertAdjacentHTML('beforeend', newTodo);
 ```
 
 Two elements are created, and that is because, in this case the string is not an actual DOM object, so it's not unique in the same was as in the previos example with `insertAdjacentElement`. So by executing these two lines of code, two insertions will be made and both will be visible in the DOM.
@@ -468,11 +469,11 @@ const innerHtmlOfDiv = `<p class="paragraph">This is a p tag inserted with inner
 Now we insert it inside the div with class content.
 
 ```js
-const div = document.querySelector(".content");
+const div = document.querySelector('.content');
 div.innerHTML = innerHtmlOfDiv;
 
 // Let's access it right away
-const p = document.querySelector(".paragraph");
+const p = document.querySelector('.paragraph');
 console.log(p);
 ```
 
@@ -490,12 +491,12 @@ element. If you want to set a value with this property, be careful, because it w
 ```
 
 ```js
-const article = document.querySelector(".article");
+const article = document.querySelector('.article');
 
 console.log(article);
 console.log(article.innerText);
 
-article.innerText = "This is the modified version of the article";
+article.innerText = 'This is the modified version of the article';
 console.log(article.innerText);
 ```
 
@@ -546,32 +547,32 @@ This method will return the given value on a specific attribute on an element.
 Given the html above, let's try and get the value of both the src attribute and the alt attribute.
 
 ```js
-const image = document.querySelector(".image");
-console.log(image.getAttribute("src"));
-console.log(image.getAttribute("alt"));
+const image = document.querySelector('.image');
+console.log(image.getAttribute('src'));
+console.log(image.getAttribute('alt'));
 ```
 
 If we want to change the value dynamically, we can use the `setAttribute` method.
 
 ```js
-image.setAttribute("src", "assets/backgroundDessert.jpg");
-image.setAttribute("alt", "Desser");
+image.setAttribute('src', 'assets/backgroundDessert.jpg');
+image.setAttribute('alt', 'Desser');
 
-console.log(image.getAttribute("src"));
-console.log(image.getAttribute("alt"));
+console.log(image.getAttribute('src'));
+console.log(image.getAttribute('alt'));
 ```
 
 All good, let's add a new attribute that don't exists.
 
 ```js
-image.setAttribute("width", "400px");
+image.setAttribute('width', '400px');
 ```
 
 Now let's remove it again:
 
 ```js
-image.removeAttribute("alt");
-console.log(image.getAttribute("alt"));
+image.removeAttribute('alt');
+console.log(image.getAttribute('alt'));
 ```
 
 [Back to Top](#javascript-dom-manipulation)
@@ -606,7 +607,7 @@ Let's consider the example with a simple todolist:
 Usually you can remove todos with some sort of button but we will just do it programatically. Firstly we need to reference the element we want to remove, in this case we use the property `children` in order to get a reference to all p-tags.
 
 ```js
-const todoList = document.querySelector(".todo-list");
+const todoList = document.querySelector('.todo-list');
 const children = todoList.children;
 console.log(children);
 ```
@@ -626,13 +627,19 @@ This method replaces a child node of an element with a new node. It must be a di
 Let's reuse the html from above, and let's replace the first element with something else. First we need to create an actual element, we can't just use a string here.
 
 ```js
-const newTodoToInsert = document.createElement("p");
-newTodoToInsert.innerText = "donate 100k dollars to an italian refugee in Sweden";
+const newTodoToInsert = document.createElement('p');
+newTodoToInsert.innerText = 'donate 100k dollars to an italian refugee in Sweden';
 
 const todoToReplace = children[0]; // Earn a millon dollars
 
 todoList.replaceChild(newTodoToInsert, todoToReplace);
 ```
+
+[Back to Top](#javascript-dom-manipulation)
+
+### replaceChildren ( element1, element2, ..elementtN ) => undefined
+
+This method replaces all the existing children inside a node with a specified new set of children. If no a elements is passed as arguments, the method will simply empty all the node of all its children.
 
 [Back to Top](#javascript-dom-manipulation)
 
@@ -673,8 +680,8 @@ This element has a `color` styling applied via the style tag. It will override a
 If you want to look at the style tag with JavaScript you just use dot-notation.
 
 ```js
-const paragraph = document.querySelector(".paragraph");
-console.log("color of p tag is: ", paragraph.style.color); // red
+const paragraph = document.querySelector('.paragraph');
+console.log('color of p tag is: ', paragraph.style.color); // red
 ```
 
 If you just want to look at the style object you can just do like this:
@@ -686,14 +693,14 @@ console.log(paragraph.style); // Shows the entire style object
 To change it with JavaScript we just use dot-notaion again together with the assignment operator `=` and pick the style and value that we want to change.
 
 ```js
-const paragraph = document.querySelector(".paragraph");
+const paragraph = document.querySelector('.paragraph');
 console.log(paragraph);
 
 // set color to green
-paragraph.style.color = "green";
+paragraph.style.color = 'green';
 
 // set font-size to 2rem
-paragraph.style.fontSize = "2rem";
+paragraph.style.fontSize = '2rem';
 ```
 
 Changing styles like this works very well when working with dynamic code and you want to update the styling depending on the interaction from the user. Although you can also just add or remove classes to the elements as well if you want to change the styling dynamically.
