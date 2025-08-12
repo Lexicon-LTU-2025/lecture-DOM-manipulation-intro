@@ -20,8 +20,6 @@
 
   - [getElementById](#getelementbyid--elementid---html-element--null)
   - [getElementByClassName](#getelementbyclassname--classname---htmlcollection)
-  - [getElementsByName](#getelementsbyname--name---nodelist)
-  - [getElementsByTagname](#getelementsbytagname--tagname---htmlcollection)
   - [querySelector](#queryselector--cssselector---html-element)
   - [querySelectorAll](#queryselectorall--cssselector---nodelist)
   - [window.getComputedStylel](#windowgetcomputedstyle--element---cssstyledeclaration)
@@ -30,7 +28,6 @@
 
   - [createElement](#createelement--tagasstring---html-element)
   - [appendChild](#appendchild--childnode---the-appended-node)
-  - [append](#append--node1-node2-node3---void)
   - [insertAdjacentElement](#insertadjacentelement--position-element--void)
   - [insertAdjacentHTML](#insertadjacenthtml--position-html---void)
 
@@ -237,14 +234,6 @@ console.log(pTags);
 
 [Back to Top](#javascript-dom-manipulation)
 
-### getElementsByName ( name ) => [NodeList](#nodelist)
-
-[Back to Top](#javascript-dom-manipulation)
-
-### getElementsByTagname ( tagName ) => [HTMLCollection](#htmlcollection)
-
-[Back to Top](#javascript-dom-manipulation)
-
 ### querySelector ( selector ) => [HTML Element](#element) | null
 
 This method returns the first element that matches your given CSS selector. This selector can be as simple or complex as a normal css selector inside you stylesheet.
@@ -361,10 +350,6 @@ And now we add our article:
 const section = document.querySelector('.section');
 section.appendChild(article);
 ```
-
-[Back to Top](#javascript-dom-manipulation)
-
-### append ( node1, node2, node3...) => void
 
 [Back to Top](#javascript-dom-manipulation)
 
@@ -756,5 +741,7 @@ Return the element that comes directly
 before the given element on the same level in the DOM tree. If none exisist, then null will be returned.
 
 ### closest ( selector ) => HTMLElement | null
+
+Returns the nearest ancestor that matches the given selector. The search starts with the element itself, from where the closest-method was invoked.
 
 [Back to Top](#javascript-dom-manipulation)
