@@ -241,11 +241,9 @@ console.log(pTags);
 
 [Back to Top](#javascript-dom-manipulation)
 
-### querySelector ( CSSSelector ) => [HTML Element](#element)
+### querySelector ( selector ) => [HTML Element](#element) | null
 
 This method returns the first element that matches your given CSS selector. This selector can be as simple or complex as a normal css selector inside you stylesheet.
-
-If no match is found, this method will throw an error _(SYNTAX_ERROR)_. Or rather if the selector is invalid.
 
 ```html
 <div class="item">This is a text item</div>
@@ -277,7 +275,7 @@ QuerySelector is applicable on HTML elements as well as on the document object.
 
 [Back to Top](#javascript-dom-manipulation)
 
-### querySelectorAll ( CSSSelector ) => [NodeList](#nodelist)
+### querySelectorAll ( selector ) => [NodeList](#nodelist)
 
 This method returns all matches of the specific css selector, and it collects
 them inside a `NodeList` and returns that `NodeList`.
@@ -292,7 +290,7 @@ console.log(firstParagraph);
 
 [Back to Top](#javascript-dom-manipulation)
 
-### window.getComputedStyle ( element ) => CSSStyleDeclaration
+### window.getComputedStyle ( element ) => CSS-StyleDeclaration
 
 This method takes in an argument that is a HTML element and returns a special CSS object, containing all the styles that have been applied to the specific element. This includes, external and internal stylesheets, browser default styles,
 inherited styles and styles that have been applied on the style attribute.
